@@ -19,6 +19,13 @@ the Render Network — the disNet mirror of
   only change when a fresh console read lands, so rows repeat them between
   reads. Job counts and the RENDER price refresh every run.
 - `latest.json` — the most recent snapshot, machine-readable.
+- Availability estimate columns (`avail_est_*`): the console shows
+  availability as 0.00 until the epoch closes, so each row also carries the
+  prorated estimate — 6 RENDER per node per epoch times the fraction of the
+  epoch the node has been registered (fleet stood up 2026-11-11, ~49% into
+  Epoch 65, so Epoch 65 expects ~8.9 RENDER fleet-wide at close).
+  `epoch_expected_total_*` = console total so far + availability expected
+  at close.
 - `REWARDS.md` — the pay model this log is audited against (RNP-019/021):
   availability 6 RENDER/epoch/node at 100% uptime (credited at epoch close),
   execution 25 x Compound Multiplier x (hours worked / 168), preparation.
