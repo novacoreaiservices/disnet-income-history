@@ -281,7 +281,8 @@ total = accurate execution + prorated availability estimate +
 preparation as recorded. Verified anchor (console read 2026-11-14
 16:35Z, 77 rewards, unchanged since 15:07Z): console execution 2.6255
 (ghelmen 1.3677, hedmehg 0.2931, drewwegh 0.938, wedpel 0.0267) ->
-accurate execution 10.6809 RENDER. Console_* fields remain in the repo
+accurate execution 10.68 RENDER (per rig: x570 6.2121, x870 1.3233,
+adam5070 3.1446, each rounded to 4dp before summing). Console_* fields remain in the repo
 as the audit trail and support-ticket evidence. Availability stays the
 prorated estimate until the Epoch 65 close (Nov 15 00:00 UTC) replaces
 it with the actual credit.
