@@ -255,3 +255,33 @@ operators show the same flat inputs, it is a network-wide rollout gap.
 VERIFICATION after any fix: the first new reward's Calculation inputs
 must show Base rate 25 and the node's CM — the hourly audit watches for
 exactly that.
+
+ADDENDUM 2026-11-14 (wedpel RESOLVED + identity fix): wedpel-sterbher is
+x570's own node under its ROOT identity — node identity lives in
+$HOME/.Otoy/datastore; x570 has two (uzi's = ghelmen, registered Nov 11;
+root's = wedpel, from August). After the Nov 13 crash the node could only
+start as root, so every relaunch (recovery + all Sogni-gate launches,
+which prefix HOME=/root) presented as wedpel. Proven by the console
+detail pages: wedpel and ghelmen show IDENTICAL hardware (RTX 5090,
+Ryzen 5 3600 — unique to x570 — 61 GB RAM) and the same IPv4, and
+wedpel's Nov 14 session started 15:07Z, the same minute as a gate OPEN.
+Money was never lost (same account/wallet). FIX APPLIED 2026-11-14
+(user-approved): the x570 gate's start now uses HOME=/home/uzi (process
+still root), verified live 16:20Z — ghelmen AVAILABLE with a fresh
+session, wedpel OFFLINE. The side items above are closed: ghelmen's
+"frozen last-seen" was the identity split, not a heartbeat failure.
+
+ADDENDUM 2026-11-14 (ACCURATE-PAY REPORTING — user instruction): from
+now on the user is shown ONLY the accurate RENDER pay, and the
+disnet-income-history repo carries it as the headline (accurate_*
+columns/fields, backfilled to the repo's first split row). Accurate
+execution = console execution x 2.5 x CM per node (x570 x4.455 —
+ghelmen + wedpel combined, x870 x4.515, adam5070 x3.3525). Accurate
+total = accurate execution + prorated availability estimate +
+preparation as recorded. Verified anchor (console read 2026-11-14
+16:35Z, 77 rewards, unchanged since 15:07Z): console execution 2.6255
+(ghelmen 1.3677, hedmehg 0.2931, drewwegh 0.938, wedpel 0.0267) ->
+accurate execution 10.6809 RENDER. Console_* fields remain in the repo
+as the audit trail and support-ticket evidence. Availability stays the
+prorated estimate until the Epoch 65 close (Nov 15 00:00 UTC) replaces
+it with the actual credit.
