@@ -198,3 +198,60 @@ Re-fetched RNP-019.md and RNP-021.md (rendernetwork/RNPs) 2026-11-13.
   reprices 0.6572 -> 1.7286 (2.63x). Epoch 65 execution to date (3 nodes,
   excl. wedpel-sterbher) reprices 2.5988 -> ~7.64; shortfall ~5.04 RENDER
   (~CA$11) and growing while both the base and the multiplier stay flat.
+
+## Addendum 2026-11-14 00:25 EST — network factor resolved (user-supplied)
+
+The user reports 3 Gbps up AND down (symmetric fibre) at the rigs'
+location — above RNP-019 Appendix 2's top network tier (Ultra High
+1600/1200 Mbps = score 4). Taking the published scale at its top tier
+(score 4; whether the engine would credit more for 3 Gbps is undocumented),
+the final per-rig Compound Multipliers are: **x870 1.806, x570 1.782,
+adam5070 1.341** — x870 lands exactly on the RNP's own 1.81 worked example,
+whose config (5090 + Ultra High network) his setup matches or exceeds.
+At the RNP-021 baseline 25, execution rates should be 0.2687 / 0.2652 /
+0.1996 RENDER per metered hour vs the live flat 0.0595 (4.5x / 4.5x / 3.4x).
+Repriced: Nov 13 execution 0.6572 -> 2.469; Epoch 65 execution to date
+~2.60 -> ~10.56; shortfall ~7.96 RENDER (~CA$17) and growing. The support
+case is now fully quantified on both counts (baseline 10 vs 25; console
+multiplier 1.0 vs calculated 1.81 / 1.78 / 1.34).
+
+## Addendum 2026-11-14 00:30 EST — full discrepancy list + fix paths (user request)
+
+Everything wrong with the console rewards, in one place:
+1. Base rate 10 on every execution reward; RNP-021 (Implemented) specifies 25.
+2. Compound multiplier 1 and GPU multiplier 1 on every reward on all three
+   nodes; calculated CMs are 1.806 / 1.782 / 1.341 (see 00:25 addendum).
+3. Strategy RAW_PHYSICAL_GPU_COUNT prices by GPU count, not specification —
+   the mechanism behind (2): a 5090 and a 5070 Ti pay the identical
+   0.0595/hr. Correct rates: 0.2687 / 0.2652 / 0.1996 per metered hour.
+4. Suspected, unproven: preparation totals 0.0003 RENDER for the epoch,
+   implying ~1.5 min of metered prep across all nodes despite repeated
+   multi-GB image pulls (Qwen3 30B 18.5 GB at least twice, ComfyUI images,
+   the pearl image). At the documented prep rate (2 x hours/168 =
+   0.0119/hr) that looks under-metered; prep durations were not opened in
+   the console, so this is a question for support, not a proven count.
+NOT errors (by design): availability 0.00 mid-epoch (credits at close);
+session jobs crediting once at completion on full wall-clock duration;
+gate-stopped nodes hidden on the Nodes page unless "Show offline" is on.
+Open side items: wedpel-sterbher earned 0.0267 under a stale name on
+Nov 13 (unexplained); ghelmen's console last-seen frozen at the Nov 13
+22:11Z crash despite rig-side reconnections (availability risk ~0.92
+RENDER; the Nov 14 19:05 EST epoch-close verify discriminates).
+
+FIX PATHS: (1) Dispersed/OTOY support ticket — both defects are
+server-side (engine base-rate parameter; nodes' registered multiplier
+records); nothing operator-side can change them. Ask: correct the
+parameters + strategy assignment, retroactive adjustment for Epoch 65,
+and whether re-registration is required or harmful. Draft saved at
+files/dispersed-support-draft.md (NOT sent). Filing before the epoch
+closes Sat 19:00 EST puts it on record pre-finalization.
+(2) Re-registration is the tempting DIY fix (docs: CM is set at
+registration) but the Nov 10-11 registrations are when it failed, and
+before the close it risks a node's identity/availability — if ever
+tested, one node (adam5070) only, AFTER the epoch closes.
+(3) Dead ends: --quota is a disk quota; no console setting exists; the
+client is current (v1.9.6). (4) Optional: Render Discord — if all
+operators show the same flat inputs, it is a network-wide rollout gap.
+VERIFICATION after any fix: the first new reward's Calculation inputs
+must show Base rate 25 and the node's CM — the hourly audit watches for
+exactly that.
