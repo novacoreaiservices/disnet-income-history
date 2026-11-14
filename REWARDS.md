@@ -139,3 +139,62 @@ registration counts from ~00:30 UTC. Fleet expectation ≈ 9–10 RENDER
 (~CA$20 at CA$2.16). Upside ~12–13 if x570's registration predates Nov 11.
 Discriminator at close: ~1.0/node = baseline-2 only; ~3/node = 6-rate with
 mid-epoch join (expected); ~6/node = 6-rate full week.
+
+## Addendum 2026-11-13 23:30 EST — LIVE reward-engine inputs (console Calculation inputs)
+
+Resolved by reading the console's per-reward Calculation inputs directly
+(ghelmen 0.1966 / 3h18m, drewwegh 0.0586 / 59m6s, hedmehg 0.0418 / 42m8s —
+all Epoch 65): EVERY execution reward on all three nodes uses Base rate 10,
+Compound multiplier 1, GPU multiplier 1, strategy RAW_PHYSICAL_GPU_COUNT,
+rounding scale 4 — a flat 0.0595 RENDER/hr of metered duration, identical
+for the RTX 5090s and the RTX 5070 Ti. Metered "Execution duration" is the
+full allocation/session window (the session job's 3h18m includes its idle
+gaps), credited once at completion. This settles the Nov 11 open question
+above: durations are allocation windows, and each 0.0595 accrual is exactly
+1 hour at 10 x 1 / 168.
+
+Against the documentation (Dispersed operator docs at otoyinc.mintlify.app,
+read 2026-11-13): the Rewards Components page publishes Base per week
+10 RENDER with formula `10 x multiplier x (hours_worked / 168)` — so base
+rate 10 MATCHES the live docs; the RNP-021 raise to 25 appears in the
+proposal text but is NOT reflected in the live docs or the console. The
+multiplier is the anomaly: the docs' Compound Multiplier page gives
+RTX 5090 ~1.81 (RTX 4090 = 1.0 baseline, RTX 4080 ~0.90) and states the
+multiplier is "calculated when your Node registers". All three nodes sit
+at exactly 1.0 — the registration-time calculation appears never to have
+applied. Estimated execution shortfall at the documented 5090 multiplier:
+~1.81x on the two 5090 nodes (Nov 13: their 0.2384 RENDER would be
+~0.4315), plus whatever the 5070 Ti's unpublished CM adds. Cause and fix
+(registration miss? v1.9.6 client? engine-side strategy assignment?) are
+open — a Dispersed support question, pending the operator's decision.
+
+## Addendum 2026-11-13 23:36 EST — baseline + CM verified against the RNP texts (user challenge)
+
+Re-fetched RNP-019.md and RNP-021.md (rendernetwork/RNPs) 2026-11-13.
+- BASELINE: RNP-021's header status is **Implemented** (created 2025-11-04).
+  Its Job Rewards section: "increase the current baseline rewards level
+  from 10 RENDER/epoch to 25 RENDER/epoch for RTX 4090 at 100% utilization,
+  scaled by Specification Multiplier and time worked... Formula:
+  25 RENDER x Multiplier x (Hours Worked / 168)", with a worked RTX 4090
+  example at 25. So the governing spec baseline IS 25; the live operator
+  docs (10) and the console (10) lag the implemented proposal. The 23:30
+  addendum's "base 10 is correct" holds only against the docs.
+- NETWORK FACTOR: nothing in RNP-021 removes the 15% network factor or
+  reweights the CM factors — the Nov 13 addendum's "removed by RNP-021"
+  note is NOT supported by the text and is withdrawn. CM stays the
+  RNP-019 Appendix 3 formula (weights .36/.26/.15/.08/.08/.04).
+- The docs' "RTX 5090 ~1.81" is RNP-019 Appendix 4 Example 2, which assumes
+  ULTRA HIGH network (1600/1200, score 4) and a Ryzen 9 7950X (CPU 1.5).
+  It is a whole-system example, not a property of the card alone.
+- Per-rig CMs recomputed from Appendix 2 scales on the actual hardware
+  (network at Medium = 1, the RNP baseline assumption; CPU interpolated
+  between the published anchors, impact ±0.005): x870 (5090/32GB/9900X)
+  1.356; x570 (5090/32GB/Ryzen 5 3600) 1.332; adam5070 (5070 Ti/16GB/7600X)
+  0.891. Network sensitivity: Low (0.25) subtracts 0.1125 from each;
+  Ultra (4) adds 0.45 (x870 -> 1.806, i.e. the 1.81 example). The user's
+  actual internet tier is the one unmeasured input.
+- Repricing at 25 x CM(medium): rates 0.2018 / 0.1982 / 0.1325 RENDER/hr
+  vs the live flat 0.0595 (3.39x / 3.33x / 2.23x). Nov 13 execution
+  reprices 0.6572 -> 1.7286 (2.63x). Epoch 65 execution to date (3 nodes,
+  excl. wedpel-sterbher) reprices 2.5988 -> ~7.64; shortfall ~5.04 RENDER
+  (~CA$11) and growing while both the base and the multiplier stay flat.
