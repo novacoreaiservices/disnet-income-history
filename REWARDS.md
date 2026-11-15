@@ -140,6 +140,21 @@ registration counts from ~00:30 UTC. Fleet expectation ≈ 9–10 RENDER
 Discriminator at close: ~1.0/node = baseline-2 only; ~3/node = 6-rate with
 mid-epoch join (expected); ~6/node = 6-rate full week.
 
+**Epoch 65 CLOSE — VERIFIED 2026-11-15T00:08Z (console read, epoch FINALIZED):**
+availability posted 7.3140 RENDER (206 entries, all timestamped
+2026-11-14T23:59Z — one lump at close, none after midnight). Per node:
+drewwegh-domster 2.7822, hedmehg-megsegh 2.209, ghelmen-sakpel 2.1019,
+wedpel-sterbher 0.2209. Fleet total 9.9398 RENDER (execution 2.6255,
+preparation 0.0003) — below the ~9–10 availability expectation by ~1.7–2.7,
+consistent with gate-held time during Sogni activity. The 6-rate is
+CONFIRMED (~2.1–2.8/node for a ~49% epoch, not ~1.0 baseline-2). x570
+combined (ghelmen + wedpel) = 2.3228, in line with x870's 2.209 — the
+name split cost nothing in availability pay. Accurate-pay epoch-65 total:
+accurate execution 10.68 + availability 7.3140 + prep 0.0003 = 17.9943
+RENDER (~CA$34.91 at CA$1.94); console 9.9398 (~CA$19.28) — the ~8.05
+RENDER execution underpayment persists into the closed epoch. Epoch 66
+ACTIVE from 2026-11-15T00:00Z, 0 rewards at the read.
+
 ## Addendum 2026-11-13 23:30 EST — LIVE reward-engine inputs (console Calculation inputs)
 
 Resolved by reading the console's per-reward Calculation inputs directly
