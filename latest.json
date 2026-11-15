@@ -1,6 +1,6 @@
 {
-  "timestamp_utc": "2026-11-15T04:04:53Z",
-  "timestamp_toronto": "2026-11-14T23:04:53-05:00",
+  "timestamp_utc": "2026-11-15T05:04:55Z",
+  "timestamp_toronto": "2026-11-15T00:04:55-05:00",
   "epoch": 66,
   "epoch_start_utc": "2026-11-15T00:00:00Z",
   "epoch_end_utc": "2026-11-22T00:00:00Z",
@@ -20,10 +20,10 @@
   "render_price_cad": 1.96,
   "fx_usdcad": 1.42029,
   "source": "hourly audit state",
-  "avail_est_render": 0.4374,
-  "avail_est_x570_render": 0.1458,
-  "avail_est_x870_render": 0.1458,
-  "avail_est_adam5070_render": 0.1458,
+  "avail_est_render": 0.5445,
+  "avail_est_x570_render": 0.1815,
+  "avail_est_x870_render": 0.1815,
+  "avail_est_adam5070_render": 0.1815,
   "avail_expected_close_render": 18.0,
   "epoch_expected_total_render": 27.9398,
   "epoch_expected_total_cad": 54.762,
@@ -32,10 +32,10 @@
   "accurate_exec_x570_render": 6.2121,
   "accurate_exec_x870_render": 1.3233,
   "accurate_exec_adam5070_render": 3.1446,
-  "accurate_total_render": 11.1177,
-  "accurate_total_cad": 21.7907,
+  "accurate_total_render": 11.2248,
+  "accurate_total_cad": 22.0006,
   "accurate_expected_close_render": 28.6803,
   "accurate_expected_close_cad": 56.2134,
   "console_source": "Muse browser console read 2026-11-15T00:05Z (signed-in OTOY session); Epoch 65 CLOSE - 283 rewards. Availability credited at close (Nov 14 23:59 UTC, status Pending Payout), below the 8.8553 estimate; epoch total 9.9398 below the 11.6-12.3 expected range. Execution flat since the 16:35Z read (no jobs in the final hours). Per-node totals: ghelmen 3.4699, drewwegh 3.7202, hedmehg 2.5021, wedpel 0.2476. Per-node availability: ghelmen 2.1019, drewwegh 2.7822, hedmehg 2.2090, wedpel 0.2209 - hedmehg ~0.74 under its ~2.95 estimate, consistent with proration from session uptime (up only ~3 of 7 epoch days after the Nov 12 power cycle); console states no formula. ghelmen OFFLINE at close (last session ended 23:59 UTC); drewwegh + hedmehg started fresh Epoch 66 sessions 00:02/00:04 UTC.",
-  "audit_last_run_utc": "2026-11-15T04:04:43Z"
+  "audit_last_run_utc": "2026-11-15T05:04:42Z"
 }
